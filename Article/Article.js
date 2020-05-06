@@ -101,14 +101,87 @@ const data = [
 
   Hint: You will need to use createElement more than once here!
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+  */
+ 
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+  function createArticle(articalAtrrs){
+
+    const {title, date, firstParagraph,secondParagraph, thirdParagraph}=articalAtrrs;
+
+    const articleArea=document.createElement('div');
+    const theTitle=document.createElement('h2');
+    const dateP=document.createElement('p');
+    const firstP=document.createElement('p');
+    const secondP=document.createElement('p');
+    const thirdP=document.createElement('p');
+    const spanB=document.createElement('span');
+
+    articleArea.appendChild(theTitle);
+    articleArea.appendChild(dateP);
+    articleArea.appendChild(firstP);
+    articleArea.appendChild(secondP);
+    articleArea.appendChild(thirdP);
+    articleArea.appendChild(spanB);
+
+    articleArea.classList.add('article');
+    dateP.classList.add('date');
+    spanB.classList.add('expandButton');
+
+
+    theTitle.textContent=title;
+    dateP.textContent=date;
+    firstP.textContent=firstParagraph;
+    secondP.textContent=secondParagraph;
+    thirdP.textContent=thirdParagraph;
+    spanB.textContent="Click to Expand the Article";
+    spanB.style.color='blue';
+    spanB.style.fontSize='1rem';
+  
+    //add eventListener to the expend button
+        console.log(spanB);
+    spanB.addEventListener('click',(event)=>{
+      articleArea.classList.toggle('article-open');
+    });
+
+    return articleArea;
+
+  }
+
+
+  const articleContainer=document.querySelector('.articles');
+
+
+    
+  data.push({ title: 'Here is the new article I add',
+  date: 'May 6st, 2020',
+  firstParagraph: `Chewy and Miley, both two-year-old Schnauzer dogs, are getting their hair cut at
+   a groomer in Bangkok for the first time since the new coronavirus outbreak began in Thailand in January.`,
+  secondParagraph: `Dressed as "Star Wars" characters, local officials in the Philippines are out and about to
+   enforce strict quarantine measures while also handing out relief packages. `,
+
+  thirdParagraph: `Volunteers clad as Superman and Spider-Man sprayed disinfectant against the coronavirus on Indonesia's island of Java, 
+  flanking a colleague wearing the winged helmet of local superhero Gatotkaca who shouted, "Wear masks, wash hands and stay alert.`})
+
+  data.forEach((articleInfo)=>{
+     const articleContent=createArticle(articleInfo);
+    articleContainer.appendChild(articleContent);
+
+  })
+
+  
+
+
+ /*
+
+  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 
+  //'article-open' on the 'article' div.
 
   Step 3: return the entire component.
 
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  Step 4: Map over the data, creating a component for each oject and add each component to 
+  //the DOM as children of the 'articles' div.
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+  Step 5: Add a new article to the array. Make sure it is in the same format as the others.
+   Refresh the page to see the new article.
 
 */
