@@ -115,13 +115,17 @@ const data = [
     const secondP=document.createElement('p');
     const thirdP=document.createElement('p');
     const spanB=document.createElement('span');
+    const readButton=document.createElement('button');
 
     articleArea.appendChild(theTitle);
     articleArea.appendChild(dateP);
+    articleArea.appendChild(readButton);
     articleArea.appendChild(firstP);
     articleArea.appendChild(secondP);
     articleArea.appendChild(thirdP);
     articleArea.appendChild(spanB);
+   
+
 
     articleArea.classList.add('article');
     dateP.classList.add('date');
@@ -137,10 +141,17 @@ const data = [
     spanB.style.color='blue';
     spanB.style.fontSize='1rem';
   
+    readButton.textContent="Read";
+    readButton.style.width="10%";
+    readButton.style.backgroundColor="lightgrey";
     //add eventListener to the expend button
         console.log(spanB);
     spanB.addEventListener('click',(event)=>{
       articleArea.classList.toggle('article-open');
+    });
+
+    readButton.addEventListener('click',(event)=>{
+      articleArea.remove();
     });
 
     return articleArea;
